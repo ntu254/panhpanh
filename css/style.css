@@ -17,6 +17,7 @@
     font-family: 'Comic Sans MS', cursive, sans-serif;
     font-size: 16px;
     cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
 }
 
 #yes {
@@ -33,6 +34,7 @@
     font-family: 'Comic Sans MS', cursive, sans-serif;
     font-size: 16px;
     cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
 }
 
 #bg {
@@ -63,6 +65,7 @@
 .swal2-popup {
     border-radius: 15px !important;
     background-color: #f9f9f9; /* Màu nền nhẹ nhàng */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
 }
 
 header h2 {
@@ -71,12 +74,14 @@ header h2 {
     text-align: center;
     margin-bottom: 30px;
     color: #ff7eb9; /* Màu hồng pastel */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Hiệu ứng bóng đổ */
 }
 
 header h4 {
     font-family: 'Pacifico', cursive;
     text-align: center;
     color: #a2d5f2; /* Màu xanh pastel */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Hiệu ứng bóng đổ */
 }
 
 @media only screen and (max-width: 500px) {

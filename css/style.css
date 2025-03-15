@@ -9,6 +9,14 @@
     left: 35%;
     top: 40vh;
     -webkit-transition: all 0.1s ease-out;
+    background-color: #ff7eb9; /* Màu hồng pastel */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 #yes {
@@ -17,6 +25,14 @@
     left: 70%;
     top: 40vh;
     -webkit-transition: all 0.3s ease-out;
+    background-color: #a2d5f2; /* Màu xanh pastel */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 #bg {
@@ -26,7 +42,6 @@
     bottom: 0;
     left: 0;
     opacity: .8;
-    /* height: 100vh; */
     z-index: 0;
     background-repeat: no-repeat;
     background-image: url(../img/bg.webp);
@@ -41,36 +56,38 @@
 
 .swal2-title,
 .swal2-content {
-    color: azure !important;
+    color: #ff7eb9 !important; /* Màu hồng pastel */
+    font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
 .swal2-popup {
     border-radius: 15px !important;
+    background-color: #f9f9f9; /* Màu nền nhẹ nhàng */
 }
 
 header h2 {
-    font-family: 'Pacifico';
+    font-family: 'Pacifico', cursive;
     font-size: 80px;
     text-align: center;
     margin-bottom: 30px;
-    color: cyan;
+    color: #ff7eb9; /* Màu hồng pastel */
 }
 
 header h4 {
-    font-family: 'Pacifico';
+    font-family: 'Pacifico', cursive;
     text-align: center;
-    color: chartreuse;
+    color: #a2d5f2; /* Màu xanh pastel */
 }
 
 @media only screen and (max-width: 500px) {
     header h2 {
-        font-family: 'sans-serif';
+        font-family: 'Pacifico', cursive;
         font-size: 45px;
         text-align: center;
         margin-bottom: 30px;
     }
     header h4 {
-        font-family: 'Pacifico';
+        font-family: 'Pacifico', cursive;
         text-align: center;
         padding: 15px;
     }
@@ -80,7 +97,7 @@ header h4 {
         left: 7%;
         top: 40vh;
         font-size: 14px;
-        padding: 3px;
+        padding: 10px 20px;
         -webkit-transition: all 0.1s ease-out;
     }
     #yes {
@@ -89,11 +106,7 @@ header h4 {
         left: 58%;
         top: 40vh;
         font-size: 14px;
-        padding: 3px;
+        padding: 10px 20px;
         -webkit-transition: all 0.3s ease-out;
     }
-}
-
-.swal2-backdrop-show {
-    background-size: 200px 100px !important;
 }

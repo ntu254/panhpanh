@@ -1,34 +1,60 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Dancing Script', cursive;
+    background-color: #f8f3ff;
+}
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff url('img/loading.gif') no-repeat center center;
+    background-size: 20%;
+    z-index: 9999;
+}
+
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .content {
     position: relative;
     z-index: 3;
+    text-align: center;
+    margin-top: 20vh;
 }
 
-#no {
+#no, #yes {
     position: absolute;
     display: inline-block;
-    left: 35%;
-    top: 40vh;
-    -webkit-transition: all 0.1s ease-out;
-    background-color: #ff6f61; /* Màu hồng nhạt */
-    color: white;
-    padding: 10px 20px;
-    border-radius: 20px;
+    padding: 15px 30px;
+    font-size: 20px;
     border: none;
+    border-radius: 25px;
     cursor: pointer;
+    transition: all 0.3s ease-out;
+    font-family: 'Dancing Script', cursive;
 }
 
 #yes {
-    position: absolute;
-    display: inline-block;
+    background-color: #ff6f61;
+    color: white;
+    left: 35%;
+    top: 40vh;
+}
+
+#no {
+    background-color: #6b5b95;
+    color: white;
     left: 70%;
     top: 40vh;
-    -webkit-transition: all 0.3s ease-out;
-    background-color: #6b5b95; /* Màu tím nhạt */
-    color: white;
-    padding: 10px 20px;
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
 }
 
 #bg {
@@ -37,75 +63,38 @@
     right: 0;
     bottom: 0;
     left: 0;
-    opacity: .8;
+    opacity: 0.8;
     z-index: 0;
-    background-repeat: no-repeat;
-    background-image: url(../img/bg-girl.webp); /* Hình nền dễ thương */
+    background-image: url('img/cute-background.jpg');
     background-size: cover;
     background-position: 50%;
-    -webkit-filter: blur(4px);
-}
-
-.swal2-image {
-    object-fit: contain;
-}
-
-.swal2-title,
-.swal2-content {
-    color: #ff6f61 !important; /* Màu hồng nhạt */
-}
-
-.swal2-popup {
-    border-radius: 15px !important;
-    background-color: #f8f3ff; /* Màu nền pastel */
+    filter: blur(4px);
 }
 
 header h2 {
-    font-family: 'Dancing Script', cursive;
     font-size: 80px;
-    text-align: center;
-    margin-bottom: 30px;
-    color: #ff6f61; /* Màu hồng nhạt */
+    color: #ff6f61;
+    margin-bottom: 20px;
 }
 
 header h4 {
-    font-family: 'Great Vibes', cursive;
-    text-align: center;
-    color: #6b5b95; /* Màu tím nhạt */
+    font-size: 30px;
+    color: #6b5b95;
 }
 
 @media only screen and (max-width: 500px) {
     header h2 {
-        font-family: 'Dancing Script', cursive;
         font-size: 45px;
-        text-align: center;
-        margin-bottom: 30px;
     }
     header h4 {
-        font-family: 'Great Vibes', cursive;
-        text-align: center;
-        padding: 15px;
-    }
-    #no {
-        position: absolute;
-        display: inline-block;
-        left: 7%;
-        top: 40vh;
-        font-size: 14px;
-        padding: 10px 20px;
-        -webkit-transition: all 0.1s ease-out;
+        font-size: 20px;
     }
     #yes {
-        position: absolute;
-        display: inline-block;
-        left: 58%;
-        top: 40vh;
-        font-size: 14px;
-        padding: 10px 20px;
-        -webkit-transition: all 0.3s ease-out;
+        left: 20%;
+        top: 60vh;
     }
-}
-
-.swal2-backdrop-show {
-    background-size: 200px 100px !important;
+    #no {
+        left: 60%;
+        top: 60vh;
+    }
 }

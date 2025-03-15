@@ -1,144 +1,177 @@
-$(document).ready(function() {
-    // process bar
-    setTimeout(function() {
-        firstQuestion();
-        $('.spinner').fadeOut();
-        $('#preloader').delay(350).fadeOut('slow');
-        $('body').delay(350).css({
-            'overflow': 'visible'
-        });
-    }, 600);
-})
-
-function init() {
-    document.getElementById('titleWeb').innerHTML = CONFIG.titleWeb
-    $('#title').text(CONFIG.title)
-    $('#desc').text(CONFIG.desc)
-    $('#yes').text(CONFIG.btnYes)
-    $('#no').text(CONFIG.btnNo)
-
-    var xYes = (0.9 * $(window).width() - $('#yes').width() - $('#no').width()) / 2;
-    var xNo = xYes + $('#yes').width() + 0.1 * $(window).width();
-    var y = 0.75 * $(window).height();
-    $('#yes').css("left", xYes);
-    $('#yes').css("top", y);
-
-    $('#no').css("left", xNo);
-    $('#no').css("top", y);
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Pacifico', cursive;
+    background-color: #f8f3ff;
 }
 
-function firstQuestion() {
-    $('.content').hide();
-    Swal.fire({
-        title: CONFIG.introTitle,
-        text: CONFIG.introDesc,
-        imageUrl: 'img/logi.gif',
-        imageWidth: 300,
-        imageHeight: 300,
-        background: '#fff url("img/iput-bg.jpg")',
-        imageAlt: 'Custom image',
-        confirmButtonText: CONFIG.btnIntro
-    }).then(function() {
-        $('.content').show(200);
-        var audio = new Audio('sound/sound.mp3');
-        audio.play();
-    })
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff url('img/loading.gif') no-repeat center center;
+    background-size: 20%;
+    z-index: 9999;
 }
 
-// switch button position
-function switchButton() {
-    var audio = new Audio('sound/duck.mp3');
-    audio.play();
-    var leftNo = $('#no').css("left");
-    var topNO = $('#no').css("top");
-    var leftY = $('#yes').css("left");
-    var topY = $('#yes').css("top");
-    $('#no').css("left", leftY);
-    $('#no').css("top", topY);
-    $('#yes').css("left", leftNo);
-    $('#yes').css("top", topNO);
-}
-// move random button position
-function moveButton() {
-    var audio = new Audio('sound/Swish1.mp3');
-    audio.play();
-    var x = Math.random() * ($(window).width() - $('#no').width()) * 0.9;
-    var y = Math.random() * ($(window).height() - $('#no').height()) * 0.9;
-    var left = x + 'px';
-    var top = y + 'px';
-    $('#no').css("left", left);
-    $('#no').css("top", top);
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-init()
+.content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    margin-top: 20vh;
+}
 
-var n = 0;
-$('#no').mousemove(function() {
-    if (Math.random() < 0.5 || n == 1)
-        switchButton();
-    else
-        moveButton();
-    n++;
-});
-$('#no').click(() => {
-    if (screen.width >= 900)
-        switchButton();
-})
+#no, #yes {
+    position: absolute;
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    font-family: 'Pacifico', cursive;
+}
 
-// generate text in input
-function textGenerate() {
-    var n = "";
-    var text = " " + CONFIG.reply;
-    var a = Array.from(text);
-    var textVal = $('#txtReason').val() ? $('#txtReason').val() : "";
-    var count = textVal.length;
-    if (count > 0) {
-        for (let i = 1; i <= count; i++) {
-            n = n + a[i];
-            if (i == text.length + 1) {
-                $('#txtReason').val("");
-                n = "";
-                break;
-            }
-        }
+#yes {
+    background-color: #ff6f61;
+    color: white;
+    left: 35%;
+    top: 40vh;
+    -webkit-transition: all 0.3s ease-out;
+}
+
+#no {
+    background-color: #6b5b95;
+    color: white;
+    left: 70%;
+    top: 40vh;
+    -webkit-transition: all 0.1s ease-out;
+}
+
+#bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.8;
+    z-index: 0;
+    background-repeat: no-repeat;
+    background-image: url('img/cute-background.jpg');
+    background-size: cover;
+    background-position: 50%;
+    -webkit-filter: blur(4px);
+}
+
+header h2 {
+    font-family: 'Pacifico', cursive;
+    font-size: 80px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ff6f61;
+}
+
+header h4 {
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+    color: #6b5b95;
+}
+
+.swal2-image {
+    object-fit: contain;
+}
+
+.swal2-title,
+.swal2-content {
+    color: azure !important;
+}
+
+.swal2-popup {
+    border-radius: 15px !important;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 1200px) {
+    header h2 {
+        font-size: 60px;
     }
-    $('#txtReason').val(n);
-    setTimeout("textGenerate()", 1);
+    header h4 {
+        font-size: 25px;
+    }
+    #yes {
+        left: 30%;
+    }
+    #no {
+        left: 65%;
+    }
 }
 
-// show popup
-$('#yes').click(function() {
-    var audio = new Audio('sound/tick.mp3');
-    audio.play();
-    Swal.fire({
-        title: CONFIG.question,
-        html: true,
-        width: 900,
-        padding: '3em',
-        html: "<input type='text' class='form-control' id='txtReason' onmousemove=textGenerate()  placeholder='Whyyy'>",
-        background: '#fff url("img/iput-bg.jpg")',
-        backdrop: `
-              rgba(0,0,123,0.4)
-              url("img/giphy2.gif")
-              left top
-              no-repeat
-            `,
-        confirmButtonColor: '#3085d6',
-        confirmButtonColor: '#fe8a71',
-        confirmButtonText: CONFIG.btnReply
-    }).then((result) => {
-        if (result.value) {
-            Swal.fire({
-                width: 900,
-                confirmButtonText: CONFIG.btnAccept,
-                background: '#fff url("img/iput-bg.jpg")',
-                title: CONFIG.mess,
-                text: CONFIG.messDesc,
-                confirmButtonColor: '#83d0c9',
-                onClose: () => {
-                    window.location = CONFIG.messLink;
-                }
-            })
-        }
-    })
-})
+@media only screen and (max-width: 768px) {
+    header h2 {
+        font-size: 50px;
+    }
+    header h4 {
+        font-size: 20px;
+    }
+    #yes {
+        left: 25%;
+        top: 50vh;
+    }
+    #no {
+        left: 60%;
+        top: 50vh;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    header h2 {
+        font-size: 40px;
+    }
+    header h4 {
+        font-size: 18px;
+    }
+    #yes {
+        left: 10%;
+        top: 60vh;
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+    #no {
+        left: 55%;
+        top: 60vh;
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    header h2 {
+        font-size: 35px;
+    }
+    header h4 {
+        font-size: 16px;
+    }
+    #yes {
+        left: 5%;
+        top: 65vh;
+    }
+    #no {
+        left: 50%;
+        top: 65vh;
+    }
+}
+
+.swal2-backdrop-show {
+    background-size: 200px 100px !important;
+}
